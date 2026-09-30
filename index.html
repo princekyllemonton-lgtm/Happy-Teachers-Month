@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Appreciation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =========================
+     FIRST SCREEN
+========================== -->
+<section class="start-screen" id="startScreen">
+
+    <div class="main-card">
+
+        <div class="status">
+            <span class="status-dot"></span>
+            SYSTEM ONLINE
+        </div>
+
+        <div class="icon-container">
+            <div class="glow-icon"></div>
+        </div>
+
+        <div class="small-title">
+            TEACHER APPRECIATION
+        </div>
+
+        <h1>
+            CLICK HERE <br>
+            <span>MESSAGE</span>
+        </h1>
+
+        <p class="description">
+            This message is only for you.
+        </p>
+
+        <button
+            class="click-here-btn"
+            onclick="initializeMessage()">
+            [ CLICK HERE ]
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SECOND SCREEN
+========================== -->
+<section class="message-screen" id="messageScreen">
+
+    <div class="message-card">
+
+        <div class="status">
+            <span class="status-dot"></span>
+            MESSAGE INITIALIZED
+        </div>
+
+        <h2>
+            THANK YOU, <br>
+            <span>SIR!</span>
+        </h2>
+
+        <div class="teacher-photo">
+            <img
+                src="4a01600c-7dbc-4dbd-b6fb-a0252ac87767.jpg"
+                alt="Teacher">
+        </div>
+
+        <p class="message">
+            First of all gusto ko lang magpasalamat sa’yo Sir
+            sa pagtuturo sa amin, specially sa pag-cocode.
+            Salamat dahil may mga bago kaming natututunan
+            tungkol sa pag-cocode. Kahit minsan hindi na namin
+            alam ang gagawin, patuloy mo pa rin kaming ginaguide.
+
+            <br><br>
+
+            Thank you nang marami Sir! 🙂
+        </p>
+
+        <p class="closing">
+            WE APPRECIATE EVERYTHING YOU DO.
+        </p>
+
+
+        <audio id="bgMusic" loop preload="auto">
+            <source src="We.mp3." type="audio/mpeg">
+            Your browser does not support audio.
+        </audio>
+
+
+        <!-- MUSIC BUTTON -->
+        <button
+            class="music-btn"
+            id="musicButton"
+            onclick="toggleMusic()">
+
+            🎵 PLAY MUSIC
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<script>
+
+    // FIRST SCREEN → MESSAGE SCREEN
+    function initializeMessage() {
+
+        const startScreen =
+            document.getElementById("startScreen");
+
+        const messageScreen =
+            document.getElementById("messageScreen");
+
+        startScreen.classList.add("hide");
+
+        setTimeout(function () {
+
+            startScreen.style.display = "none";
+
+            messageScreen.classList.add("show");
+
+        }, 500);
+    }
+
+
+    // PLAY / PAUSE MUSIC
+    function toggleMusic() {
+
+       
+        const music =
+            document.getElementById("bgMusic");
+
+        const musicButton =
+            document.getElementById("musicButton");
+
+
+        
+        if (music.played.length === 0) {
+
+            music.play()
+                .then(function () {
+
+                    musicButton.innerHTML =
+                        "⏸ PAUSE MUSIC";
+
+                })
+                .catch(function (error) {
+
+                    console.log(
+                        "Music could not play:",
+                        error
+                    );
+
+                    alert(
+                        "Hindi ma-play ang music. " +
+                        "Siguraduhin na ang file ay tinatawag na We.mp3.mp3 " +
+                        "at nasa same folder ng index.html."
+                    );
+
+                });
+
+        }
+
+        // PAUSE MUSIC
+        else {
+
+            music.pause();
+
+            musicButton.innerHTML =
+                "🎵 PLAY MUSIC";
+        }
+
+    }
+
+</script>
+
+</body>
+</html>
